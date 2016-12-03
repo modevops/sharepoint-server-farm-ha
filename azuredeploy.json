@@ -77,7 +77,7 @@
         "group": "Infrastructure settings",
         "description": "Change this value to your repo name if deploying from a fork"
       },
-      "defaultValue": "https://github.com/moditpro/sharepoint-server-farm-ha/blob/master"
+      "defaultValue": "https://raw.githubusercontent.com/moditpro/sharepoint-server-farm-ha/master"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
@@ -1237,96 +1237,6 @@
           },
           "DNSServer": {
             "value": "[parameters('adPdcNicIPAddress')]"
-          }
-        }
-      }
-    },
-    {
-      "name": "ConfiguringSharepoint",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "dependsOn": [
-        "Microsoft.Resources/deployments/ConfiguringSQLAlwaysOnCluster",
-        "Microsoft.Resources/deployments/CreatingSharepointVirtualMachines"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('_artifactsLocation'),'/','nestedtemplates','/','configuringSharePoint.json', parameters('_artifactsLocationSasToken'))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "spappVMName": {
-            "value": "[variables('vmSettings').spappVMName]"
-          },
-          "sqlVMName": {
-            "value": "[variables('vmSettings').sqlVMName]"
-          },
-          "location": {
-            "value": "[parameters('location')]"
-          },
-          "spConfigurationModulesURL": {
-            "value": "[concat(parameters('_artifactsLocation'),'/','dscv2','/','ConfigureSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
-          },
-          "spConfigurationFunction": {
-            "value": "ConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA"
-          },
-          "domainName": {
-            "value": "[parameters('domainName')]"
-          },
-          "adminUserName": {
-            "value": "[parameters('adminUserName')]"
-          },
-          "adminPassword": {
-            "value": "[parameters('adminPassword')]"
-          },
-          "sharePointSetupUserAccountUserName": {
-            "value": "[parameters('sharePointSetupUserAccountUserName')]"
-          },
-          "sharePointFarmAccountUserName": {
-            "value": "[parameters('sharePointFarmAccountUserName')]"
-          },
-          "sqlServerServiceAccountUserName": {
-            "value": "[parameters('sqlServerServiceAccountUserName')]"
-          },
-          "sqlAOAGName": {
-            "value": "[variables('sqlAOAGName')]"
-          },
-          "administrationContentDatabaseName": {
-            "value": "[variables('administrationContentDatabaseName')]"
-          },
-          "configDatabaseName": {
-            "value": "[variables('configDatabaseName')]"
-          },
-          "contentDatabaseName": {
-            "value": "[variables('contentDatabaseName')]"
-          },
-          "sharepointCAfqdn": {
-            "value": "[variables('sharepointCAfqdn')]"
-          },
-          "sharePointSetupUserAccountPassword": {
-            "value": "[parameters('sharePointSetupUserAccountPassword')]"
-          },
-          "sharePointFarmAccountPassword": {
-            "value": "[parameters('sharePointFarmAccountPassword')]"
-          },
-          "sharePointFarmPassphrasePassword": {
-            "value": "[parameters('sharePointFarmPassphrasePassword')]"
-          },
-          "sqlServerServiceAccountPassword": {
-            "value": "[parameters('sqlServerServiceAccountPassword')]"
-          },
-          "spwebVMName": {
-            "value": "[variables('vmSettings').spwebVMName]"
-          },
-          "sharepointFarmName": {
-            "value": "[parameters('sharepointFarmName')]"
-          },
-          "sharepointWebfqdn": {
-            "value": "[variables('sharepointWebfqdn')]"
-          },
-          "spSiteTemplateName": {
-            "value": "[parameters('spSiteTemplateName')]"
           }
         }
       }
