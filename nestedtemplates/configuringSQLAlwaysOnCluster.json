@@ -56,6 +56,9 @@
     "sqlAOListenerName": {
       "type": "string"
     },
+    "sqlAOListenerPort": {
+      "type": "string"
+    },
     "sqlLBName": {
       "type": "string"
     },
@@ -174,6 +177,7 @@
             "sqlAlwaysOnEndpointName": "[parameters('sqlAOEPName')]",
             "sqlAlwaysOnAvailabilityGroupName": "[parameters('sqlAOAGName')]",
             "sqlAlwaysOnAvailabilityGroupListenerName": "[parameters('sqlAOListenerName')]",
+            "SqlAlwaysOnAvailabilityGroupListenerPort": "[parameters('sqlAOListenerPort')]",
             "databaseNames": null,
             "lbName": "[parameters('sqlLBName')]",
             "lbAddress": "[parameters('sqlLBIPAddress')]",

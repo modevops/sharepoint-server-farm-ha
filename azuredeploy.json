@@ -87,7 +87,7 @@
         "artifactsLocationSasToken": ""
       },
       "defaultValue": ""
-    },    
+    },
     "domainName": {
       "type": "string",
       "metadata": {
@@ -158,6 +158,13 @@
         "description": "The IP address of the new SQL ILB"
       },
       "defaultValue": "10.0.0.6"
+    },
+    "sqlAOListenerPort": {
+      "type": "string",
+      "metadata": {
+        "description": "The Sql AG Listener port"
+      },
+      "defaultValue": "1433"
     },
     "sqlSubnet": {
       "type": "string",
@@ -1150,6 +1157,9 @@
           "sqlAOListenerName": {
             "value": "[variables('sqlAOListenerName')]"
           },
+          "sqlAOListenerPort": {
+            "value": "[parameters('sqlAOListenerPort')]"
+          },
           "sqlLBName": {
             "value": "[variables('lbSettings').sqlLBName]"
           },
@@ -1237,6 +1247,99 @@
           },
           "DNSServer": {
             "value": "[parameters('adPdcNicIPAddress')]"
+          }
+        }
+      }
+    },
+    {
+      "name": "ConfiguringSharepoint",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "Microsoft.Resources/deployments/ConfiguringSQLAlwaysOnCluster",
+        "Microsoft.Resources/deployments/CreatingSharepointVirtualMachines"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('_artifactsLocation'),'/','nestedtemplates','/','configuringSharePoint.json', parameters('_artifactsLocationSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "spappVMName": {
+            "value": "[variables('vmSettings').spappVMName]"
+          },
+          "sqlVMName": {
+            "value": "[variables('vmSettings').sqlVMName]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "spConfigurationModulesURL": {
+            "value": "[concat(parameters('_artifactsLocation'),'/','dscv2','/','ConfigureSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
+          },
+          "spConfigurationFunction": {
+            "value": "ConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA"
+          },
+          "domainName": {
+            "value": "[parameters('domainName')]"
+          },
+          "adminUserName": {
+            "value": "[parameters('adminUserName')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "sharePointSetupUserAccountUserName": {
+            "value": "[parameters('sharePointSetupUserAccountUserName')]"
+          },
+          "sharePointFarmAccountUserName": {
+            "value": "[parameters('sharePointFarmAccountUserName')]"
+          },
+          "sqlServerServiceAccountUserName": {
+            "value": "[parameters('sqlServerServiceAccountUserName')]"
+          },
+          "sqlAOAGName": {
+            "value": "[variables('sqlAOAGName')]"
+          },
+          "sqlAOListenerName":  {
+            "value": "[variables('sqlAOListenerName')]"
+          },
+          "administrationContentDatabaseName": {
+            "value": "[variables('administrationContentDatabaseName')]"
+          },
+          "configDatabaseName": {
+            "value": "[variables('configDatabaseName')]"
+          },
+          "contentDatabaseName": {
+            "value": "[variables('contentDatabaseName')]"
+          },
+          "sharepointCAfqdn": {
+            "value": "[variables('sharepointCAfqdn')]"
+          },
+          "sharePointSetupUserAccountPassword": {
+            "value": "[parameters('sharePointSetupUserAccountPassword')]"
+          },
+          "sharePointFarmAccountPassword": {
+            "value": "[parameters('sharePointFarmAccountPassword')]"
+          },
+          "sharePointFarmPassphrasePassword": {
+            "value": "[parameters('sharePointFarmPassphrasePassword')]"
+          },
+          "sqlServerServiceAccountPassword": {
+            "value": "[parameters('sqlServerServiceAccountPassword')]"
+          },
+          "spwebVMName": {
+            "value": "[variables('vmSettings').spwebVMName]"
+          },
+          "sharepointFarmName": {
+            "value": "[parameters('sharepointFarmName')]"
+          },
+          "sharepointWebfqdn": {
+            "value": "[variables('sharepointWebfqdn')]"
+          },
+          "spSiteTemplateName": {
+            "value": "[parameters('spSiteTemplateName')]"
           }
         }
       }
