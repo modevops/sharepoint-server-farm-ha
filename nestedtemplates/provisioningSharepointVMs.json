@@ -146,7 +146,6 @@
           "modulesURL": "[parameters('spPreparationModulesURL')]",
           "wmfVersion": "4.0",
           "configurationFunction": "[parameters('spPreparationFunction')]",
-          "sasToken": "[parameters('_artifactsLocationSasToken')]",
           "properties": {
             "DNSServer": "[parameters('DNSServer')]",
             "DomainName": "[parameters('domainName')]"
@@ -239,7 +238,6 @@
           "modulesURL": "[parameters('spPreparationModulesURL')]",
           "wmfVersion": "4.0",
           "configurationFunction": "[parameters('spPreparationFunction')]",
-          "sasToken": "[parameters('_artifactsLocationSasToken')]",
           "properties": {
             "DNSServer": "[parameters('DNSServer')]",
             "DomainName": "[parameters('domainName')]"

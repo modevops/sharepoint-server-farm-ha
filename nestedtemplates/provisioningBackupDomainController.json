@@ -132,8 +132,7 @@
               "modulesURL": "[parameters('adBDCPreparationModulesURL')]",
               "wmfVersion": "4.0",
               "configurationFunction": "[parameters('adBDCPreparationFunction')]",
-              "sasToken": "[ parameters('_artifactsLocationSasToken') ]",
-              "properties": {
+               "properties": {
                 "DNSServer": "[parameters('DNSServer')]"
               }
             }

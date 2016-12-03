@@ -55,9 +55,8 @@
           },
           "protectedSettings": {
             "items": {
-              "adminPassword": "[parameters('adminPassword')]",
-              "sasToken": "[parameters('_artifactsLocationSasToken') ]"
-                          }
+              "adminPassword": "[parameters('adminPassword')]"
+                                      }
           }
         }
       }

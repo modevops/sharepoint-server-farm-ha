@@ -106,9 +106,8 @@
           },
           "protectedSettings": {
             "items": {
-              "adminPassword": "[parameters('adminPassword')]",
-              "sasToken": "[ parameters('_artifactsLocationSasToken')]"
-            }
+              "adminPassword": "[parameters('adminPassword')]"
+                          }
           }
         }
       },
@@ -147,9 +146,8 @@
             "items": {
               "adminPassword": "[parameters('adminPassword')]",
               "sqlServerServiceAccountPassword": "[parameters('sqlServerServiceAccountPassword')]",
-              "sharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]",
-              "sasToken": "[ parameters('_artifactsLocationSasToken')]"
-            }
+              "sharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]"
+                         }
           }
         }
       },
@@ -206,9 +204,8 @@
             "items": {
               "adminPassword": "[parameters('adminPassword')]",
               "sqlServerServiceAccountPassword": "[parameters('sqlServerServiceAccountPassword')]",
-              "sharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]",
-              "sasToken": "[ parameters('_artifactsLocationSasToken')]"
-            }
+              "sharePointSetupUserAccountPassword": "[parameters('sharePointSetupUserAccountPassword')]"
+                          }
           }
         }
       }
