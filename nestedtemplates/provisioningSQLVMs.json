@@ -77,12 +77,6 @@
     "fswPreparationFunction": {
       "type": "string"
     },
-    "_artifactsLocationSasToken": {
-      "type": "securestring",
-       "metadata": {
-        "description": "Auto-generated token to access _artifactsLocation"
-      }
-    },
     "DNSServer": {
       "type": "string"
     }
@@ -165,7 +159,6 @@
               "modulesURL": "[parameters('fswPreparationModulesURL')]",
               "wmfVersion": "4.0",
               "configurationFunction": "[parameters('fswPreparationFunction')]",
-              "sasToken": "[parameters('_artifactsLocationSasToken')]",
               "properties": {
                 "DNSServer": "[parameters('DNSServer')]",
                 "SharePath": "[parameters('sharePath')]"
@@ -287,7 +280,7 @@
         "settings": {
           "modulesURL": "[parameters('prepareClusterModulesURL')]",
           "configurationFunction": "[parameters('prepareClusterConfigurationFunction')]",
-           "properties": {
+          "properties": {
             "DNSServer": "[parameters('DNSServer')]",
             "DomainName": "[parameters('domainName')]"
           }

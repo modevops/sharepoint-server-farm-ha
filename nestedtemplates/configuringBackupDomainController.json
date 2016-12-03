@@ -20,46 +20,40 @@
     "adBDCConfigurationFunction": {
       "type": "string"
     },
-    "_artifactsLocationSasToken": {
-      "type": "securestring",
-         "metadata": {
-        "description": "Auto-generated token to access _artifactsLocation"
-      }
-    },
-      "adBDCConfigurationModulesURL": {
-        "type": "string"
-      }
-    },
-    "resources": [
-      {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(parameters('adBDCVMName'),'/CreateBDC')]",
-        "apiVersion": "2015-06-15",
-        "location": "[parameters('location')]",
-        "properties": {
-          "publisher": "Microsoft.Powershell",
-          "type": "DSC",
-          "typeHandlerVersion": "2.17",
-          "autoUpgradeMinorVersion": true,
-          "settings": {
-            "modulesURL": "[parameters('adBDCConfigurationModulesURL')]",
-            "wmfVersion": "4.0",
-            "configurationFunction": "[parameters('adBDCConfigurationFunction')]",
-            "properties": {
-              "domainName": "[parameters('domainName')]",
-              "adminCreds": {
-                "userName": "[parameters('adminUserName')]",
-                "password": "privateSettingsRef:adminPassword"
-              }
+    "adBDCConfigurationModulesURL": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('adBDCVMName'),'/CreateBDC')]",
+      "apiVersion": "2015-06-15",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.17",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "modulesURL": "[parameters('adBDCConfigurationModulesURL')]",
+          "wmfVersion": "4.0",
+          "configurationFunction": "[parameters('adBDCConfigurationFunction')]",
+          "properties": {
+            "domainName": "[parameters('domainName')]",
+            "adminCreds": {
+              "userName": "[parameters('adminUserName')]",
+              "password": "privateSettingsRef:adminPassword"
             }
-          },
-          "protectedSettings": {
-            "items": {
-              "adminPassword": "[parameters('adminPassword')]"
-                                      }
+          }
+        },
+        "protectedSettings": {
+          "items": {
+            "adminPassword": "[parameters('adminPassword')]"
           }
         }
       }
-    ],
-    "outputs": { }
-  }
+    }
+  ],
+  "outputs": {}
+}
