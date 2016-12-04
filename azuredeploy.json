@@ -159,13 +159,6 @@
       },
       "defaultValue": "10.0.0.6"
     },
-    "sqlAOListenerPort": {
-      "type": "string",
-      "metadata": {
-        "description": "The Sql AG Listener port"
-      },
-      "defaultValue": "1433"
-    },
     "sqlSubnet": {
       "type": "string",
       "metadata": {
@@ -1157,9 +1150,6 @@
           "sqlAOListenerName": {
             "value": "[variables('sqlAOListenerName')]"
           },
-          "sqlAOListenerPort": {
-            "value": "[parameters('sqlAOListenerPort')]"
-          },
           "sqlLBName": {
             "value": "[variables('lbSettings').sqlLBName]"
           },
@@ -1301,9 +1291,6 @@
           },
           "sqlAOAGName": {
             "value": "[variables('sqlAOAGName')]"
-          },
-          "sqlAOListenerName":  {
-            "value": "[variables('sqlAOListenerName')]"
           },
           "administrationContentDatabaseName": {
             "value": "[variables('administrationContentDatabaseName')]"
