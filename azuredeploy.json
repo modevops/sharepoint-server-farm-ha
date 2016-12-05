@@ -1087,7 +1087,9 @@
       "apiVersion": "2015-01-01",
       "dependsOn": [
         "Microsoft.Resources/deployments/UpdatingDNSwithBackupADVM",
-        "Microsoft.Resources/deployments/ProvisioningSQLVirtualMachines"
+        "Microsoft.Resources/deployments/ProvisioningSQLVirtualMachines",
+        "Microsoft.Resources/deployments/ConfiguringBackupADDomainController"
+
       ],
       "properties": {
         "mode": "Incremental",
@@ -1270,6 +1272,12 @@
           },
           "spConfigurationFunction": {
             "value": "ConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA"
+          },
+          "spjoinConfigurationModulesURL": {
+          "value": "[concat(parameters('_artifactsLocation'),'/','dscv2','/','joinConfigureSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
+        },
+          "spjoinConfigurationFunction": {
+            "value": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA"
           },
           "domainName": {
             "value": "[parameters('domainName')]"
