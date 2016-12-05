@@ -25,6 +25,16 @@
       },
       "defaultValue": "https://raw.githubusercontent.com/moditpro/sharepoint-server-farm-ha/master"
     },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "group": "Infrastructure settings",
+        "description": "Auto-generated token to access _artifactsLocation",
+        "artifactsLocationSasToken": ""
+      },
+      "defaultValue": ""
+    },
+
     "spjoinConfigurationModulesURL": {
       "type": "string",
       "defaultvalue": "[concat(parameters('_artifactsLocation'),'/','dscv2','/','joinConfigureSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
