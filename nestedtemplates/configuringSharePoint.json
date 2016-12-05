@@ -8,6 +8,9 @@
     "sqlVMName": {
       "type": "string"
     },
+    "sharePath": {
+      "type": "string"
+    },
     "location": {
       "type": "string"
     },
@@ -16,6 +19,22 @@
     },
     "spConfigurationFunction": {
       "type": "string"
+    },
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "group": "Infrastructure settings",
+        "description": "Change this value to your repo name if deploying from a fork"
+      },
+      "defaultValue": "https://raw.githubusercontent.com/moditpro/sharepoint-server-farm-ha/master"
+    },
+    "spjoinConfigurationModulesURL": {
+      "type": "string",
+      "defaultvalue": "[concat(parameters('_artifactsLocation'),'/','dscv2','/','joinConfigureSharePointServerHA.ps1.zip', parameters('_artifactsLocationSasToken'))]"
+    },
+    "spjoinConfigurationFunction": {
+      "type": "string",
+      "defaultvalue": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA"
     },
     "domainName": {
       "type": "string"
@@ -138,7 +157,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('spappVMName'),'1/ConfigureSPAppServer')]",
+      "name": "[concat(parameters('spappVMName'),'1/joinConfigureSPAppServer')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -150,9 +169,9 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesURL": "[parameters('spConfigurationModulesURL')]",
+          "modulesURL": "[parameters('spjoinConfigurationModulesURL')]",
           "wmfVersion": "4.0",
-          "configurationFunction": "[parameters('spConfigurationFunction')]",
+          "configurationFunction": "[parameters('spjoinConfigurationFunction')]",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
@@ -198,7 +217,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('spwebVMName'),'0/ConfigureSPWebServer')]",
+      "name": "[concat(parameters('spwebVMName'),'0/joinConfigureSPWebServer')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -210,9 +229,9 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesURL": "[parameters('spConfigurationModulesURL')]",
+          "modulesURL": "[parameters('spjoinConfigurationModulesURL')]",
           "wmfVersion": "4.0",
-          "configurationFunction": "[parameters('spConfigurationFunction')]",
+          "configurationFunction": "[parameters('spjoinConfigurationFunction')]",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
@@ -258,7 +277,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(parameters('spwebVMName'),'1/ConfigureSPWebServer')]",
+      "name": "[concat(parameters('spwebVMName'),'1/joinConfigureSPWebServer')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -272,7 +291,7 @@
         "settings": {
           "modulesURL": "[parameters('spConfigurationModulesURL')]",
           "wmfVersion": "4.0",
-          "configurationFunction": "[parameters('spConfigurationFunction')]",
+          "configurationFunction": "[parameters('spjoinConfigurationFunction')]",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
