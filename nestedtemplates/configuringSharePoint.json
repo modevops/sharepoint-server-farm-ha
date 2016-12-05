@@ -32,9 +32,7 @@
     "sharePointFarmAccountUserName": {
       "type": "string"
     },
-    "sharePointPoolAccountUserName": {
-      "type": "string"
-    },
+    
     "sqlServerServiceAccountUserName": {
       "type": "string"
     },
