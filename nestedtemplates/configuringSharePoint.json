@@ -88,7 +88,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "modulesURL": "[parameters('spConfigurationModulesURL')]",
-          "wmfVersion": "4.0",
+          "wmfVersion": "5.0",
           "configurationFunction": "[parameters('spConfigurationFunction')]",
           "properties": {
             "domainName": "[parameters('domainName')]",
@@ -150,9 +150,9 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesURL": "[parameters('spConfigurationModulesURL')]",
-          "wmfVersion": "4.0",
-          "configurationFunction": "[parameters('spConfigurationFunction')]",
+          "modulesURL": "https://github.com/moditpro/sharepoint-server-farm-ha/blob/master/dscv2/joinConfigureSharePointServerHA.ps1.zip?raw=true",
+          "wmfVersion": "5.0",
+          "configurationFunction": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
@@ -210,9 +210,9 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesURL": "[parameters('spConfigurationModulesURL')]",
-          "wmfVersion": "4.0",
-          "configurationFunction": "[parameters('spConfigurationFunction')]",
+          "modulesURL": "https://github.com/moditpro/sharepoint-server-farm-ha/blob/master/dscv2/joinConfigureSharePointServerHA.ps1.zip?raw=true",
+          "wmfVersion": "5.0",
+          "configurationFunction": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
@@ -270,9 +270,9 @@
         "typeHandlerVersion": "2.17",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesURL": "[parameters('spConfigurationModulesURL')]",
-          "wmfVersion": "4.0",
-          "configurationFunction": "[parameters('spConfigurationFunction')]",
+          "modulesURL": "https://github.com/moditpro/sharepoint-server-farm-ha/blob/master/dscv2/joinConfigureSharePointServerHA.ps1.zip?raw=true",
+          "wmfVersion": "5.0",
+          "configurationFunction": "joinConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA",
           "properties": {
             "domainName": "[parameters('domainName')]",
             "adminCreds": {
