@@ -61,6 +61,10 @@
     },
     "domainName": {
       "value": "contoso.local"
+    },
+    "sqlAOListenerName": {
+      "value": "alwayson-ag-listener"
     }
+
   }
 }
