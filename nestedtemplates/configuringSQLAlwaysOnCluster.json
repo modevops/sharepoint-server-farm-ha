@@ -174,7 +174,7 @@
             "sqlAlwaysOnEndpointName": "[parameters('sqlAOEPName')]",
             "sqlAlwaysOnAvailabilityGroupName": "[parameters('sqlAOAGName')]",
             "sqlAlwaysOnAvailabilityGroupListenerName": "[parameters('sqlAOListenerName')]",
-            "databaseNames": "test",
+            "databaseNames": null,
             "lbName": "[parameters('sqlLBName')]",
             "lbAddress": "[parameters('sqlLBIPAddress')]",
             "primaryReplica": "[concat(parameters('sqlVMName'),'1')]",
