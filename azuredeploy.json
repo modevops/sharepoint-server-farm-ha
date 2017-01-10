@@ -255,6 +255,36 @@
         "description": "The Sharepoint Farm account password"
       }
     },
+    "SPServicePoolManagedAccountUserName": {
+      "type": "string",
+      "metadata": {
+        "group": "SharePoint Server settings",
+        "description": "The Sharepoint Service Pool account name"
+      },
+      "defaultValue": "sp_service"
+    },
+    "SPServicePoolManagedAccountPassword": {
+      "type": "securestring",
+      "metadata": {
+        "group": "SharePoint Server settings",
+        "description": "The Sharepoint Farm account password"
+      }
+    },
+    "SPWebPoolManagedAccountUserName": {
+      "type": "string",
+      "metadata": {
+        "group": "SharePoint Server settings",
+        "description": "The Sharepoint Web Pool account name"
+      },
+      "defaultValue": "sp_webpool"
+    },
+    "SPWebPoolManagedAccountPassword": {
+      "type": "securestring",
+      "metadata": {
+        "group": "SharePoint Server settings",
+        "description": "The Sharepoint WEb Pool account password"
+      }
+    },
     "sharePointFarmPassphrasePassword": {
       "type": "securestring",
       "metadata": {
@@ -1273,7 +1303,7 @@
           "spConfigurationFunction": {
             "value": "ConfigureSharePointServerHA.ps1\\ConfigureSharePointServerHA"
           },
-      
+
           "domainName": {
             "value": "[parameters('domainName')]"
           },
@@ -1315,6 +1345,18 @@
           },
           "sharePointFarmPassphrasePassword": {
             "value": "[parameters('sharePointFarmPassphrasePassword')]"
+          },
+          "SPServicePoolManagedAccountUserName": {
+            "value": "[parameters('SPServicePoolManagedAccountUserName')]"
+          },
+          "SPWebPoolManagedAccountUserName": {
+            "value": "[parameters('SPWebPoolManagedAccountUserName')]"
+          },
+          "SPServicePoolManagedAccountPassword": {
+            "value": "[parameters('SPServicePoolManagedAccountPassword')]"
+          },
+          "SPWebPoolManagedAccountPassword": {
+            "value": "[parameters('SPWebPoolManagedAccountPassword')]"
           },
           "sqlServerServiceAccountPassword": {
             "value": "[parameters('sqlServerServiceAccountPassword')]"
